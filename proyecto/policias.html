@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Cursos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #003366; /* Azul oscuro */
+            color: #ffffff;
+            padding: 20px;
+            position: relative;
+        }
+        h1 {
+            color: #ffcc00; /* Amarillo */
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            padding: 8px;
+            box-sizing: border-box;
+            margin-right: 10px; /* Espacio entre los campos */
+        }
+        .form-group input[type="text"] {
+            width: 300px; /* Ancho específico para el textbox de nombre */
+        }
+        .form-group input[type="number"] {
+            width: 100px; /* Ancho específico para el textbox de edad */
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            width: 50%; /* Para que los checkboxes sean más fáciles de ver en pantallas pequeñas */
+            margin-bottom: 5px;
+        }
+        button {
+            padding: 5px 10px; /* Ajustar padding para hacer los botones más pequeños */
+            background-color: #ffcc00;
+            color: #003366;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px; /* Tamaño de fuente más pequeño para botones */
+        }
+        button:hover {
+            background-color: #ffdd33;
+        }
+        #mensaje {
+            margin-top: 20px;
+            color: #00ff00;
+            text-align: center;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            width: 100px;
+        }
+        .logo-left {
+            left: 10px;
+        }
+        .logo-right {
+            right: 10px;
+        }
+        @media (max-width: 768px) {
+            .checkbox-group label {
+                width: 100%; /* En pantallas pequeñas, los checkboxes se alinean verticalmente */
+            }
+            button {
+                width: 100%; /* Asegurar que los botones se ajusten bien en dispositivos móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="img/images.jpe" class="logo logo-left" alt="Logo Izquierdo">
+    <img src="logo_policia2.png" class="logo logo-right" alt="Logo Derecho">
+
+    <h1>Registro de Cursos</h1>
+
+    <form id="formulario">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="identidad">Identidad:</label>
+            <input type="text" id="identidad" name="identidad" required>
+        </div>
+
+        <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cursos">Seleccionar Cursos (puedes seleccionar hasta 15):</label>
+            <div class="checkbox-group" id="cursos">
+                <label><input type="checkbox" value="Curso 1"> Curso 1</label>
+                <label><input type="checkbox" value="Curso 2"> Curso 2</label>
+                <label><input type="checkbox" value="Curso 3"> Curso 3</label>
+                <label><input type="checkbox" value="Curso 4"> Curso 4</label>
+                <label><input type="checkbox" value="Curso 5"> Curso 5</label>
+                <label><input type="checkbox" value="Curso 6"> Curso 6</label>
+                <label><input type="checkbox" value="Curso 7"> Curso 7</label>
+                <label><input type="checkbox" value="Curso 8"> Curso 8</label>
+                <label><input type="checkbox" value="Curso 9"> Curso 9</label>
+                <label><input type="checkbox" value="Curso 10"> Curso 10</label>
+                <label><input type="checkbox" value="Curso 11"> Curso 11</label>
+                <label><input type="checkbox" value="Curso 12"> Curso 12</label>
+                <label><input type="checkbox" value="Curso 13"> Curso 13</label>
+                <label><input type="checkbox" value="Curso 14"> Curso 14</label>
+                <label><input type="checkbox" value="Curso 15"> Curso 15</label>
+                <label><input type="checkbox" value="Curso 16"> Curso 16</label>
+                <label><input type="checkbox" value="Curso 17"> Curso 17</label>
+                <label><input type="checkbox" value="Curso 18"> Curso 18</label>
+                <label><input type="checkbox" value="Curso 19"> Curso 19</label>
+                <label><input type="checkbox" value="Curso 20"> Curso 20</label>
+                <label><input type="checkbox" value="Curso 21"> Curso 21</label>
+                <label><input type="checkbox" value="Curso 22"> Curso 22</label>
+                <label><input type="checkbox" value="Curso 23"> Curso 23</label>
+                <label><input type="checkbox" value="Curso 24"> Curso 24</label>
+                <label><input type="checkbox" value="Curso 25"> Curso 25</label>
+                <label><input type="checkbox" value="Curso 26"> Curso 26</label>
+                <label><input type="checkbox" value="Curso 27"> Curso 27</label>
+                <label><input type="checkbox" value="Curso 28"> Curso 28</label>
+                <label><input type="checkbox" value="Curso 29"> Curso 29</label>
+                <label><input type="checkbox" value="Curso 30"> Curso 30</label>
+                <!-- Más cursos aquí... -->
+                <label><input type="checkbox" value="Curso 15"> Curso 15</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="guardarDatos()">Guardar Datos</button>
+        <button type="button" onclick="accederAdmin()">Administrador</button>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script>
+        function limpiarCampos() {
+            document.getElementById('nombre').value = '';
+            document.getElementById('identidad').value = '';
+            document.getElementById('edad').value = '';
+            document.querySelectorAll('#cursos input').forEach(checkbox => checkbox.checked = false);
+        }
+
+        function guardarDatos() {
+            const nombre = document.getElementById('nombre').value;
+            const identidad = document.getElementById('identidad').value;
+            const edad = document.getElementById('edad').value;
+            const cursosSeleccionados = Array.from(document.querySelectorAll('#cursos input:checked')).map(checkbox => checkbox.value).join(", ");
+
+            if (cursosSeleccionados.split(', ').length > 15) {
+                alert("Por favor, selecciona hasta 15 cursos.");
+                return;
+            }
+
+            // Obtener la lista actual de usuarios o crear una nueva si no existe
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+            // Verificar si la identidad ya está registrada
+            const identidadDuplicada = usuarios.some(usuario => usuario.identidad === identidad);
+
+            if (identidadDuplicada) {
+                document.getElementById('mensaje').textContent = "Error: La identidad ya está registrada.";
+                document.getElementById('mensaje').style.color = "#ff0000"; // Cambiar el color del mensaje a rojo
+                return; // Detener la función si la identidad ya existe
+            }
+
+            // Crear un objeto de usuario
+            const usuario = { nombre, identidad, edad, cursos: cursosSeleccionados };
+            usuarios.push(usuario);
+
+            // Guardar la nueva lista de usuarios en localStorage
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+            // Mostrar mensaje de éxito
+            document.getElementById('mensaje').textContent = "Datos guardados exitosamente";
+            document.getElementById('mensaje').style.color = "#00ff00"; // Cambiar el color del mensaje a verde
+
+            // Limpiar los campos
+            limpiarCampos();
+        }
+
+        function accederAdmin() {
+            const password = prompt("Por favor, ingrese la contraseña de administrador:");
+            if (password === "admin123") {
+                window.location.href = "tabla.html";
+            } else {
+                alert("Contraseña incorrecta");
+            }
+        }
+    </script>
+
+</body>
+</html>
